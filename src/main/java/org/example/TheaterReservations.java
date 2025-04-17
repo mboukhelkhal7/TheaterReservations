@@ -1,6 +1,7 @@
 package org.example;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class TheaterReservations {
@@ -16,8 +17,13 @@ public class TheaterReservations {
         System.out.println("Please enter your name: ");
         fullName = input.nextLine();
 
-        System.out.println("What date will you be coming (yyyy-mm-dd): ");
-        showDate = LocalDate.parse(input.nextLine());
+
+        System.out.println("What date will you be coming (MM/dd/yyyy): ");
+        String dateInput = input.nextLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        showDate = LocalDate.parse(dateInput, formatter);
+
+        //showDate = LocalDate.parse(input.nextLine());
 
         System.out.println("How many tickets would you like? ");
         numberOfTickets= input.nextInt();
